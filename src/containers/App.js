@@ -3,6 +3,8 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import WithClass from '../hoc/WithClass'
+import Aux from '../hoc/Aux'
+import withClass from '../hoc/withClass1' //this is just a function not a component
 
 class App extends Component {
   constructor(props) {
@@ -65,15 +67,15 @@ class App extends Component {
     }
 
     return (
-        <WithClass classes={classes.App}>
+        <Aux>
             <Cockpit 
               showPersons={this.state.showPersons}
               persons={this.state.persons}
               clicked={this.togglePersonsHandler}/>
             {persons}
-        </WithClass>
+        </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
