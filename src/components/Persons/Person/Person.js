@@ -25,7 +25,7 @@ class Person extends Component {
   }
 }
 //set types of props
-Person.PropTypes = {
+Person.propTypes = {
   click: PropTypes.func,
   name: PropTypes.string,
   age: PropTypes.number,
