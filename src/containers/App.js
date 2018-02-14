@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass'
+//import WithClass from '../hoc/WithClass'
 import Aux from '../hoc/Aux'
 import withClass from '../hoc/withClass1' //this is just a function not a component
 
@@ -16,7 +16,8 @@ class App extends Component {
         { id: 'mnjj566', name: 'manu', age: 20 },
         { id: 'qwer454', name: 'stephanie', age: 25 }
       ],
-      showPersons: false
+      showPersons: false,
+      toggleClickedCounter: 0
     }
   }
 
@@ -52,7 +53,17 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    // this.setState({
+    //   showPersons: !doesShow, 
+    //   toggleClicked: this.state.toggleClicked + 1
+    // });
+
+    this.setState((previousState, props) => {
+      return {
+        showPersons: !doesShow, 
+        toggleClicked: previousState.toggleClicked + 1
+      }
+    })
   }
 
   render() {

@@ -23,8 +23,8 @@ class Persons extends Component {
   //THIS IS IMPORTANT. STOPS UNNESSASARY UPDATES CAN HELP TO IMPROVE PERFORMANCE
   shouldComponentUpdate(nextProps, nextState) {
     console.log('UPDATE Persons.js inside should component update',nextProps, nextState);
-    //return true;//update continues (false and update will stop)
-    nextProps.persons = this.props.persons;
+    return true;//update continues (false and update will stop)
+    // return nextProps.persons === this.props.persons;
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -42,6 +42,7 @@ class Persons extends Component {
         key={person.id}
         click={() => this.props.clicked(index)}
         name={person.name}
+        position={index}
         age={person.age} 
         changed={(event) => this.props.changed(event, person.id)}/>
     })
